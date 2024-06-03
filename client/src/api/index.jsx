@@ -1,6 +1,6 @@
 import axios from 'axios';
 // axios is used to make requests to the server and make api calls
-const url = 'http://localhost:5000/posts';
+const url = 'https://memories-24-7.onrender.com/posts';
 
 export const fetchPosts = () => axios.get(url);
 // Now we have to focus on adding redux capabilities to our application bcz all actions related to backend will be done using redux
