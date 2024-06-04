@@ -28,9 +28,9 @@ const App = () => {
         </div>
       </AppBar>
       <Grow in>
-        <Container maxWidth>
-          <Grid container justify="space-between" alignItems="stretch" spacing={3} sx={{ flexDirection: isMobile ? "column-reverse" : "row" }}>
-            <Grid item xs={12} sm={7}>
+        <Container maxWidth="lg">
+          <Grid container justifyContent="space-between" alignItems="stretch" spacing={3} sx={{ flexDirection: isMobile ? "column-reverse" : "row" }}>
+            <Grid item xs={12} sm={8}>
               <Posts setCurrentId={setCurrentId}/>
             </Grid>
             <Grid item xs={12} sm={4}>
