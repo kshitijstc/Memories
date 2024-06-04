@@ -18,7 +18,7 @@ const App = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="xl">
       <AppBar className="appBar" position="static" color="inherit">
         <div className="appBarContent">
           <Typography className="heading" variant="h2" align="center">
@@ -28,7 +28,7 @@ const App = () => {
         </div>
       </AppBar>
       <Grow in>
-        <Container>
+        <Container maxWidth>
           <Grid container justify="space-between" alignItems="stretch" spacing={3} sx={{ flexDirection: isMobile ? "column-reverse" : "row" }}>
             <Grid item xs={12} sm={7}>
               <Posts setCurrentId={setCurrentId}/>

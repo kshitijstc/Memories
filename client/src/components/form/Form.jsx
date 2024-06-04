@@ -11,9 +11,9 @@ import Input from '@mui/material/Input';
 
 // Define styled components
 const CustomPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(2),
-}));
+  padding: theme.spacing(3),
 
+}));
 const FormContainer = styled("form")({
   display: "flex",
   flexWrap: "wrap",
@@ -79,7 +79,7 @@ const Form = ({currentId,setCurrentId}) => {
   };
 
   return (
-    <CustomPaper>
+    <CustomPaper >
       <FormContainer onSubmit={handleSubmit}>
         <Typography variant="h6">{currentId ? 'Editing':'Creating'} a Memory</Typography>
         <FileInput
