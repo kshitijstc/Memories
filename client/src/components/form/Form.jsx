@@ -32,9 +32,6 @@ const ButtonSubmit = styled(Button)({
 const CustomInput = styled(Input)({
   width: "97%",
   margin: "10px 0",
-  // "& .MuiInputBase-input": {
-  //   borderBottom: "none",
-  // }, 
 });
 
 const Form = ({currentId,setCurrentId}) => {
@@ -116,7 +113,7 @@ const Form = ({currentId,setCurrentId}) => {
         <FileInput
           required
           name="tags"
-          label="Tags"
+          label="Tags (comma separated)"
           variant="outlined"
           fullWidth
           value={postData.tags}

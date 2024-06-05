@@ -13,6 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { useDispatch } from "react-redux";
 import { deletePost, likePost } from "../../../actions/Posts";
+import EditIcon from '@mui/icons-material/Edit';
 // Define styled components
 const Media = styled(CardMedia)({
   height: 0,
@@ -81,7 +82,7 @@ const Post = ({ post , setCurrentId}) => {
       </Overlay>
       <Overlay2>
         <Button style={{ color: "white" }} size="small" onClick={() => {setCurrentId(post._id)}}>
-          <MoreHorizIcon fontSize="default" />
+          <EditIcon fontSize="small" />
         </Button>
       </Overlay2>
       <Details>

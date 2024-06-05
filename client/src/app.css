@@ -1,22 +1,22 @@
 .appBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    margin-bottom: 20px;
-  }
-  
-  .appBarContent {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .heading {
-    margin-bottom: 10px;
-  }
-  
-  .image {
-    margin-top: 10px;
-    border-radius: 10px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+.appBarContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.heading {
+  margin-bottom: 10px;
+}
+
+.image {
+  margin-top: 10px;
+  border-radius: 10px;
+}
