@@ -71,19 +71,34 @@ const CustomCardActions = styled(CardActions)({
 
 const Post = ({ post , setCurrentId}) => {
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const Likes = () => { 
+    if (post.likes.length > 0) {
+      return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
+        ? (
+          <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` }</>
+        ) : (
+          <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</>
+        );
+    }
+    return <><ThumbUpAltIcon fontSize="small" />&nbsp;Like</>;
+  }; 
+
+
   return (
     <CustomCard>
       <Media image={post.selectedFile} title={post.title} />
       <Overlay>
-        <Typography variant="h6">{post.creator}</Typography>
+        <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">
           {moment(post.createdAt).fromNow()}
         </Typography>
       </Overlay>
       <Overlay2>
+      {user?.result?.googleId === post?.creator || user?.result?._id === post?.creator && (
         <Button style={{ color: "white" }} size="small" onClick={() => {setCurrentId(post._id)}}>
           <EditIcon fontSize="small" />
-        </Button>
+        </Button>)}
       </Overlay2>
       <Details>
         <Typography variant="body2" color="textSecondary">
@@ -97,14 +112,15 @@ const Post = ({ post , setCurrentId}) => {
       <Typography variant="body2" component="p" color="textSecondary">{post.message}</Typography>
       </CardContent>
       <CustomCardActions>
-        <Button size="small" color="primary" onClick={() => {dispatch(likePost(post._id))}}>
-          <ThumbUpAltIcon fontSize="small" />
-          Like&nbsp;{post.likeCount}
+        <Button size="small" color="primary" onClick={() => {dispatch(likePost(post._id))}} disabled={!user?.result}>
+          <Likes/>
         </Button>
-        <Button size="small" color="primary" onClick={() => {dispatch(deletePost(post._id))}}>
-          <DeleteIcon fontSize="small" />
-          Delete
-        </Button>
+        {user?.result?.googleId === post?.creator || user?.result?._id === post?.creator && (
+          <Button size="small" color="primary" onClick={() => {dispatch(deletePost(post._id))}}>
+            <DeleteIcon fontSize="small" />
+            Delete
+          </Button>
+        )}
       </CustomCardActions>
     </CustomCard>
   );

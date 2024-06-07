@@ -6,6 +6,7 @@ import memories from "../../images/memories.jpg";
 import "../../app.css";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
+import decode from "jwt-decode";
 
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -14,9 +15,11 @@ const Navbar = () => {
   const location = useLocation();
   useEffect(() => {
     const token = user?.token;
-
-    // JWT
-
+    // JWT token expiration setup
+    if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 

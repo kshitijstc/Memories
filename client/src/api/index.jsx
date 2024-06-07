@@ -1,8 +1,18 @@
 import axios from 'axios';
+// axios is used to make requests to the server and make api calls
+
 
 const API = axios.create({ baseURL: 'https://memories-24-7.onrender.com' });
 
-// axios is used to make requests to the server and make api calls
+// For middleware
+API.interceptors.request.use((req) => {
+    if (localStorage.getItem('profile')) {
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+    }
+    return req;
+});
+
+
 // const url = 'https://memories-24-7.onrender.com/posts';
 
 // export const fetchPosts = () => axios.get(url);

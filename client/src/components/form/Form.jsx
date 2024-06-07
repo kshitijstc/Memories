@@ -40,12 +40,12 @@ const Form = ({currentId,setCurrentId}) => {
   const [file, setFile] = useState(null);
   const [base64Image, setBase64Image] = useState('');
   const [postData, setPostData] = useState({
-    creator: '',
     title: '',
     message: '',
     tags: '',
     selectedFile: ''
   });
+  const user = JSON.parse(localStorage.getItem('profile'));
   const dispatch = useDispatch();
   
   useEffect(()=>{
@@ -57,16 +57,15 @@ const Form = ({currentId,setCurrentId}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(currentId){
-      dispatch(updatePost(currentId,postData));
+      dispatch(updatePost(currentId,{...postData,name:user?.result?.name}));
     }else{
-      dispatch(createPost(postData));
+      dispatch(createPost({...postData,name:user?.result?.name}));
     }
     clear();
   };
     
   const clear = () => {
     setPostData({
-      creator: "",
       title: "",
       message: "",
       tags: "",
@@ -75,11 +74,21 @@ const Form = ({currentId,setCurrentId}) => {
     setCurrentId(null);
   };
 
+  if(!user?.result?.name){
+    return (
+      <CustomPaper>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own memories and like other's memories.
+        </Typography>
+      </CustomPaper>
+    );
+  }
+
   return (
     <CustomPaper >
       <FormContainer onSubmit={handleSubmit}>
         <Typography variant="h6">{currentId ? 'Editing':'Creating'} a Memory</Typography>
-        <FileInput
+        {/* <FileInput
           required
           name="creator"
           label="Creator"
@@ -89,7 +98,7 @@ const Form = ({currentId,setCurrentId}) => {
           onChange={(e) =>
             setPostData({ ...postData, creator: e.target.value })
           }
-        />
+        /> */}
         <FileInput
           required
           name="title"
