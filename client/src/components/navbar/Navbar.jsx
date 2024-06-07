@@ -1,11 +1,32 @@
 import React from "react";
+import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AppBar, Avatar, Toolbar, Typography, Button } from "@mui/material";
 import memories from "../../images/memories.jpg";
 import "../../app.css";
+import { useDispatch } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  const user = null;
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    const token = user?.token;
+
+    // JWT
+
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, [location]);
+
+  const logout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+    setUser(null);
+  }
+
+  console.log("User:", user);
   return (
     <AppBar className="appBar" position="static" color="inherit">
       <Toolbar className="toolbar">
@@ -34,7 +55,7 @@ const Navbar = () => {
               <Typography className="userName" variant="h6">
                 {user.result.name}
               </Typography>
-              <Button className="logout" variant="contained" color="secondary">
+              <Button className="logout" variant="contained" color="secondary" onClick={logout}>
                 Logout
               </Button>
             </div>

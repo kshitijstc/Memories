@@ -7,148 +7,149 @@ import {
   Grid,
   Button,
 } from "@mui/material";
+// import Icon from "./Icon";
 import { styled } from "@mui/material/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import Input from "./Input";
+import {useDispatch} from 'react-redux';
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
   const state = null;
-  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleSubmit = () => {};
   const handleChange = () => {};
   const handleShowPassword = () => setShowPassword(!showPassword);
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
     setShowPassword(false);
-  }
+  };
+
+  const googleSuccess = async (res) => {
+    // ?. is the optional chaining operator in JavaScript that allows you to access deeply nested object properties without worrying if the property exists or not.
+    const token = res?.credential;
+    const decoded = jwtDecode(token);
+    const result = {
+      email: decoded.email,
+      name: decoded.name,
+      googleId: decoded.sub,
+      imageUrl: decoded.picture,
+    };
+
+    try {
+      dispatch({type: "AUTH", data: { result, token }});
+      navigate("/");
+      // console.log("Result:", result);
+      // console.log("Token:", token);
+    } catch (error) {
+      console.log("Dispatch error:", error);
+    }
+  };
+  const googleFailure = (error) => {
+    console.log(error);
+    console.log("Google Sign In was unsuccessful. Try again later");
+  };
+  
   return (
-    <Container component="main" maxWidth="xs">
-      <Paper elevation={3} sx={{ padding: '20px', marginTop: '30px' }}>
-        <Avatar 
-          sx={{
-            margin: "10px auto 20px auto",
-            backgroundColor: "primary.main",
-          }}
-        >
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography
-          variant="h5"
-          sx={{textAlign: "center",}}
-        >
-          {isSignup ? "Sign up" : "Sign in"}
-        </Typography>
-        <form onSubmit={handleSubmit}>
-          <Grid
-            container
-            spacing={3}
+    
+    
+      <Container component="main" maxWidth="xs">
+        <Paper elevation={3} sx={{ padding: "20px", marginTop: "30px" }}>
+          <Avatar
             sx={{
-              padding: "20px",
-              textAlign: "center"}}
-          >
-            {isSignup && (
-              <>
-                <Input
-                  name="firstName"
-                  label="First Name"
-                  handleChange={handleChange}
-                  autoFocus
-                  half
-                />
-                <Input
-                  name="lastName"
-                  label="Last Name"
-                  handleChange={handleChange}
-                  half
-                />
-              </>
-            )}
-            <Input
-              name="email"
-              label="Email Address"
-              handleChange={handleChange}
-              type="email"
-            />
-            <Input
-              name="password"
-              label="Password"
-              handleChange={handleChange}
-              type={showPassword ? "text" : "password"}
-              handleShowPassword={handleShowPassword}
-            />
-            {isSignup && (
-              <Input
-                name="confirmPassword"
-                label="Repeat Password"
-                handleChange={handleChange}
-                type="password"
-              />
-            )}
-          </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary" 
-            sx={{ 
-            margin: "10px 0",
-            fontSize: "16px",
-            fontWeight: "bold",
-            letterSpacing: "1px",
+              margin: "10px auto 20px auto",
+              backgroundColor: "primary.main",
             }}
           >
-            {isSignup ? "Sign Up" : "Sign In"}
-          </Button>
-          
-          {/* <GoogleOAuthProvider clientId="YOUR_CLIENT_ID">
-            <GoogleLogin
-              onSuccess={(response) => {
-                console.log(response);
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography variant="h5" sx={{ textAlign: "center" }}>
+            {isSignup ? "Sign up" : "Sign in"}
+          </Typography>
+          <form onSubmit={handleSubmit}>
+            <Grid
+              container
+              spacing={3}
+              sx={{
+                padding: "20px",
+                textAlign: "center",
               }}
-              onFailure={(response) => {
-                console.log(response);
-              }}
-              render={(renderProps) => (
-                <Button
-                  className={classes.googleButton}
-                  color="primary"
-                  fullWidth
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                  startIcon={<Icon />}
-                  variant="contained"
-                >
-                  Google Sign In
-                </Button>
+            >
+              {isSignup && (
+                <>
+                  <Input
+                    name="firstName"
+                    label="First Name"
+                    handleChange={handleChange}
+                    autoFocus
+                    half
+                  />
+                  <Input
+                    name="lastName"
+                    label="Last Name"
+                    handleChange={handleChange}
+                    half
+                  />
+                </>
               )}
-            />
-            <GoogleLogout
-              render={(renderProps) => (
-                <Button
-                  className={classes.logout}
-                  color="primary"
-                  fullWidth
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                  startIcon={<Icon />}
-                  variant="contained"
-                >
-                  Logout
-                </Button>
+              <Input
+                name="email"
+                label="Email Address"
+                handleChange={handleChange}
+                type="email"
+              />
+              <Input
+                name="password"
+                label="Password"
+                handleChange={handleChange}
+                type={showPassword ? "text" : "password"}
+                handleShowPassword={handleShowPassword}
+              />
+              {isSignup && (
+                <Input
+                  name="confirmPassword"
+                  label="Repeat Password"
+                  handleChange={handleChange}
+                  type="password"
+                />
               )}
-            />
-          </GoogleOAuthProvider> */}
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Button onClick={switchMode}>
-                {isSignup
-                  ? "Already have an account? Sign in"
-                  : "Don't have an account? Sign Up"}
-              </Button>
             </Grid>
-          </Grid>
-        </form>
-      </Paper>
-    </Container>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              sx={{
+                margin: "10px 0",
+                fontSize: "16px",
+                fontWeight: "bold",
+                letterSpacing: "1px",
+              }}
+            >
+              {isSignup ? "Sign Up" : "Sign In"}
+            </Button>
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Button onClick={switchMode}>
+                  {isSignup
+                    ? "Already have an account? Sign in"
+                    : "Don't have an account? Sign Up"}
+                </Button>
+              </Grid>
+            </Grid>
+            <GoogleLogin
+              onSuccess={googleSuccess}
+              onError={googleFailure}
+              cookiePolicy="single_host_origin"
+            />
+          </form>
+        </Paper>
+      </Container>
   );
 };
 

@@ -7,6 +7,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import {thunk} from "redux-thunk";
 import {rootReducer} from "./reducers";
 import "./index.css";
+import { GoogleOAuthProvider, } from "@react-oauth/google";
 
 const store = configureStore({
   reducer: rootReducer,
@@ -14,8 +15,10 @@ const store = configureStore({
 });
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <GoogleOAuthProvider clientId="414201799122-0tcbah6qssjf69p54hli6on5praq3q0e.apps.googleusercontent.com">
     <Provider store={store}>
       <App/>
     </Provider>
+    </GoogleOAuthProvider>
   </React.StrictMode>
 );

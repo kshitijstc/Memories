@@ -8,7 +8,7 @@ const posts = (state = [], action) => {
         case FETCH_ALL:
             return action.payload;
         case CREATE:
-            return [...state, action.payload];
+            return [action.payload, ...state];
         case DELETE:
             return state.filter((post) => post._id !== action.payload);
         default:
