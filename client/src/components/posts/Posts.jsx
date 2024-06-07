@@ -9,7 +9,7 @@ import Post from './post/Post'; // Import the Post component
 const Posts = ({setCurrentId}) => {
   // useSelector is used to fetch data from redux store
   const posts = useSelector((state) => state.posts);
-  console.log(posts);
+  // console.log(posts);
   return (
     <div>
       {!posts.length ? <CircularProgress /> : (

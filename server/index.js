@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import postRoutes from "./routes/posts.js";
+import userRoutes from "./routes/users.js";
 import dotenv from "dotenv";
 
 const app = express();
@@ -17,7 +18,7 @@ app.get("/", (req, res) => {
   res.send("Hello to Memories server");
 });
 app.use("/posts", postRoutes);
-
+app.use('/user', userRoutes);
 const PORT = process.env.PORT;
 
 mongoose.connect(process.env.CONNECTION_URL)

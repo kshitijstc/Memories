@@ -15,15 +15,37 @@ import Input from "./Input";
 import {useDispatch} from 'react-redux';
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { signin, signup } from "../../actions/auth";
 
 const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
-  const state = null;
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleSubmit = () => {};
-  const handleChange = () => {};
+
+  const handleSubmit = (e) => {
+    // Prevents the page from refreshing when the form is submitted
+    e.preventDefault();
+    // console.log("Form Data:", formData);
+    if (isSignup) {
+      // Dispatch the signup action
+      dispatch(signup(formData,navigate));
+    } else {
+      dispatch(signin(formData,navigate));
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleShowPassword = () => setShowPassword(!showPassword);
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
