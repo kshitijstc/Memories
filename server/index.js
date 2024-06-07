@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
   res.send("Hello to Memories server");
 });
 app.use("/posts", postRoutes);
-app.use('/user', userRoutes);
+app.use("/user", userRoutes);
 const PORT = process.env.PORT;
 
 mongoose.connect(process.env.CONNECTION_URL)
