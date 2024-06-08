@@ -1,0 +1,10 @@
+version: v1
+services:
+  - type: web
+    name: my-web-service
+    env: static
+    staticPublishPath: public
+    routes:
+      - type: rewrite
+        source: /.*
+        destination: /index.html
