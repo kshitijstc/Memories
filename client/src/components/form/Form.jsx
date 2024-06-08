@@ -4,7 +4,6 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import ImageBase64 from "react-image-base64";
 import { useDispatch , useSelector} from "react-redux";
 import { createPost,updatePost } from "../../actions/Posts";
 import Input from '@mui/material/Input';
@@ -38,7 +37,6 @@ const Form = ({currentId,setCurrentId}) => {
   // Using useSelector to get the post which we want to update in the form field from redux store.
   const post=useSelector((state)=>currentId?state.posts.find((p)=>p._id===currentId):null);
   const [file, setFile] = useState(null);
-  const [base64Image, setBase64Image] = useState('');
   const [postData, setPostData] = useState({
     title: '',
     message: '',
@@ -128,7 +126,11 @@ const Form = ({currentId,setCurrentId}) => {
           value={postData.tags}
           onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })}
         />
-        <CustomInput type="file" onChange={(e) => setFile(e.target.files[0])} />
+
+        //how to use multer to upload image
+
+
+         <CustomInput type="file" onChange={(e) => setFile(e.target.files[0])} />
         
         <ButtonSubmit
           variant="contained"
