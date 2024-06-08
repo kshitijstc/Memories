@@ -16,6 +16,7 @@ import {useDispatch} from 'react-redux';
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { signin, signup } from "../../actions/auth";
+import { CenterFocusStrong } from "@mui/icons-material";
 
 const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -141,6 +142,11 @@ const Auth = () => {
                 />
               )}
             </Grid>
+            <GoogleLogin
+              onSuccess={googleSuccess}
+              onError={googleFailure}
+              cookiePolicy="single_host_origin"
+            />
             <Button
               type="submit"
               fullWidth
@@ -164,11 +170,7 @@ const Auth = () => {
                 </Button>
               </Grid>
             </Grid>
-            <GoogleLogin
-              onSuccess={googleSuccess}
-              onError={googleFailure}
-              cookiePolicy="single_host_origin"
-            />
+            
           </form>
         </Paper>
       </Container>
