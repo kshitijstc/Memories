@@ -16,7 +16,6 @@ import {useDispatch} from 'react-redux';
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { signin, signup } from "../../actions/auth";
-import { CenterFocusStrong } from "@mui/icons-material";
 
 const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
