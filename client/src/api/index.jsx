@@ -2,7 +2,7 @@ import axios from 'axios';
 // axios is used to make requests to the server and make api calls
 
 
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+const API = axios.create({ baseURL: 'https://memories-24-7.onrender.com' });
 
 // For middleware
 API.interceptors.request.use((req) => {

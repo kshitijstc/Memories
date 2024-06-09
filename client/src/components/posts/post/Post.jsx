@@ -210,7 +210,7 @@ const Post = ({ post, setCurrentId }) => {
 
   return (
     <CustomCard>
-      <Media image={`http://localhost:5000/${post.selectedFile}`} title={post.title} />
+      <Media image={`https://memories-24-7.onrender.com/${post.selectedFile}`} title={post.title} />
       <Overlay>
         <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
