@@ -14,8 +14,19 @@ export const getPosts = async (req,res) => {
 }
 
 export const createPost = async (req,res) => {
-    const post = req.body;
-    const newPost = new PostMessage({...post, creator: req.userId, createdAt: new Date().toISOString()});
+    const { title, message, tags } = req.body;
+    const selectedFile = req.file?`uploads/${req.file.filename}` : '';
+
+    const newPost = new PostMessage({
+        title,
+        message,
+        tags,
+        selectedFile,
+        creator: req.userId,
+        createdAt: new Date().toISOString(),
+    });
+    // const post = req.body;
+    // const newPost = new PostMessage({...post, creator: req.userId, createdAt: new Date().toISOString()});
     try {
         await newPost.save();
         res.status(201).json(newPost);
@@ -26,10 +37,18 @@ export const createPost = async (req,res) => {
 
 export const updatePost = async (req,res) => { 
     const { id: _id } = req.params;
-    const post = req.body;
+    // const post = req.body;
+    const { title, message, tags } = req.body;
+    const selectedFile = req.file?`uploads/${req.file.filename}` : req.body.selectedFile;
     if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("No post with that id");
-    const updatedPost = await PostMessage.findByIdAndUpdate(_id, {...post, _id}, {new: true});
-    res.json(updatedPost);
+
+    /*const updatedPost = await PostMessage.findByIdAndUpdate(_id, {...post, _id}, {new: true});
+    res.json(updatedPost);*/
+    const updatedPost = { title, message, tags, selectedFile, _id };
+
+    const result = await PostMessage.findByIdAndUpdate(_id, updatedPost, { new: true });
+
+    res.json(result);
 }
 
 export const deletePost = async (req,res) => {
