@@ -128,6 +128,10 @@
 // export default Post;
 
 
+
+
+
+
 import React from 'react';
 import { styled } from '@mui/system';
 import Card from '@mui/material/Card';
@@ -136,6 +140,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { ButtonBase } from '@mui/material';
 import moment from 'moment';
 import { Button } from '@mui/material';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -144,6 +149,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { useDispatch } from 'react-redux';
 import { deletePost, likePost } from '../../../actions/Posts';
 import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from 'react-router-dom';
 
 const Media = styled(CardMedia)({
   height: 0,
@@ -190,11 +196,16 @@ const CustomCardActions = styled(CardActions)({
   display: 'flex',
   justifyContent: 'space-between',
 });
+const CustomButtonBase = styled(ButtonBase)({
+  padding: '0 16px 8px 16px',
+  display: 'flex',
+  justifyContent: 'space-between',
+});
 
 const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
-
+  const navigate = useNavigate();
   const Likes = () => {
     if (post.likes.length > 0) {
       return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
@@ -208,9 +219,13 @@ const Post = ({ post, setCurrentId }) => {
     return <><ThumbUpAltIcon fontSize="small" />&nbsp;Like</>;
   };
 
+  const openPost = () => navigate(`/posts/${post._id}`);
+
   return (
-    <CustomCard>
-      <Media image={`https://memories-24-7.onrender.com/${post.selectedFile}`} title={post.title} />
+    <CustomCard raised elevation={6}>
+      <ButtonBase component="span" onClick={openPost} style={{ display: 'block', textAlign: 'initial' }}>
+      {/* <Media image={`https://memories-24-7.onrender.com/${post.selectedFile}`} title={post.title} /> */}
+      <Media image={`http://localhost:5000/${post.selectedFile}`} title={post.title} />
       <Overlay>
         <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
@@ -231,6 +246,7 @@ const Post = ({ post, setCurrentId }) => {
         <Title variant="h5">{post.title}</Title>
         <Typography variant="body2" component="p" color="textSecondary">{post.message}</Typography>
       </CardContent>
+      </ButtonBase>
       <CustomCardActions>
         <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))} disabled={!user?.result}>
           <Likes />
@@ -246,3 +262,6 @@ const Post = ({ post, setCurrentId }) => {
 };
 
 export default Post;
+
+
+

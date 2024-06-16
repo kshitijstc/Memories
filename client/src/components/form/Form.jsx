@@ -170,6 +170,7 @@ import Input from "@mui/material/Input";
 // Define styled components
 const CustomPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),
+  margin: "10px 0",
 }));
 const FormContainer = styled("form")({
   display: "flex",

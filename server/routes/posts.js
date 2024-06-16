@@ -1,5 +1,5 @@
 import express from "express";
-import { getPosts,createPost,updatePost,deletePost,likePost } from "../controllers/posts.js";
+import { getPostsBySearch,getPosts,createPost,updatePost,deletePost,likePost,getPost } from "../controllers/posts.js";
 import auth from "../middleware/auth.js";
 import multer from "multer";
 
@@ -18,7 +18,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage:storage});
 
+router.get("/:id",getPost);
 router.get("/",getPosts);
+router.get("/search",getPostsBySearch);
 router.post("/",auth,upload.single("selectedFile"),createPost);
 router.patch("/:id", auth,upload.single('selectedFile'),updatePost);
 router.delete("/:id",auth,deletePost);

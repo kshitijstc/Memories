@@ -2,7 +2,7 @@ import React from "react";
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AppBar, Avatar, Toolbar, Typography, Button } from "@mui/material";
-import memories from "../../images/memories.jpg";
+import MemoriesLogo from "../../images/MemoriesLogo.jpg";
 import "../../app.css";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -30,22 +30,13 @@ const Navbar = () => {
     setUser(null);
   }
 
-  console.log("User:", user);
+  // console.log("User:", user);
   return (
     <AppBar className="appBar" position="static" color="inherit">
       <Toolbar className="toolbar">
-        <div className="logo-container">
-          <Typography
-            component={Link}
-            to="/"
-            className="heading"
-            variant="h2"
-            align="center"
-          >
-            Memories
-          </Typography>
-          <img className="image" src={memories} alt="memories" height="70" />
-        </div>
+        <Link to="/" className="logo-container">
+        <img className="image" src={MemoriesLogo} alt="memories" height="70 rem"/>
+        </Link>
         <div className="toolbar-buttons">
           {user ? (
             <div className="profile">
