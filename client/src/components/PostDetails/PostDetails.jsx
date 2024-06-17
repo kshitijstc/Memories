@@ -90,6 +90,7 @@ const PostDetails = () => {
       </Section>
       <ImageSection>
         <Media src={
+          `https://memories-24-7.onrender.com/${post.selectedFile}` || 
           `http://localhost:5000/${post.selectedFile}` || MemoriesLogo}></Media>
       </ImageSection>
     </Card>
@@ -104,7 +105,8 @@ const PostDetails = () => {
             <Typography gutterBottom variant='subtitle2'>{name}</Typography> 
             <Typography gutterBottom variant='subtitle2'>{message}</Typography> 
             <Typography gutterBottom variant='subtitle1'>{likes.length}</Typography> 
-            <img src={`http://localhost:5000/${selectedFile}` || MemoriesLogo} alt={title} width="200px"/>
+            <img src={` https://memories-24-7.onrender.com/${selectedFile}` || `
+            http://localhost:5000/${selectedFile}` || MemoriesLogo} alt={title} width="200px"/>
           </div>
         })}
       </div>

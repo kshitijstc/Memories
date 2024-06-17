@@ -2,8 +2,8 @@ import axios from 'axios';
 // axios is used to make requests to the server and make api calls
 
 // ----------------------------------------------------------
-/* const API = axios.create({ baseURL: 'https://memories-24-7.onrender.com' });*/
-const API = axios.create({ baseURL: 'http://localhost:5000/'});
+const API = axios.create({ baseURL: 'https://memories-24-7.onrender.com' });
+// const API = axios.create({ baseURL: 'http://localhost:5000/'});
 // Whenever you uncomment and comment it make sure to change the image url in Post.jsx also
 // ----------------------------------------------------------
 
