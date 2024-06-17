@@ -79,6 +79,11 @@ const Home = () => {
             <Posts setCurrentId={setCurrentId} />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
+            {!searchQuery && (
+              <Paper sx={{ padding: 2, margin: "10px 0" }}>
+                <Pagination page={page} />
+              </Paper>
+            )}
             <AppBarSearch position="static" color="inherit" sx={{ padding: 2 }}>
               <TextField
                 name="search"
@@ -104,11 +109,7 @@ const Home = () => {
               >Search</Button>
             </AppBarSearch>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
-            {!searchQuery && (
-              <Paper sx={{ padding: 2, margin: "10px 0" }}>
-                <Pagination page={page} />
-              </Paper>
-            )}
+            
           </Grid>
         </Grid>
       </Container>

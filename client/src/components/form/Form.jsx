@@ -190,9 +190,11 @@ const CustomInput = styled(Input)({
 });
 
 const Form = ({ currentId, setCurrentId }) => {
-  const post = useSelector((state) =>
-    currentId ? state.posts.find((p) => p._id === currentId) : null
-  );
+  // const post = useSelector((state) =>
+  //   currentId ? state.posts.find((p) => p._id === currentId) : null
+  // );
+  const posts = useSelector((state) => state.posts.posts || state.posts || []);
+  const post = currentId ? posts.find((p) => p._id === currentId) : null;
   const [file, setFile] = useState(null);
   const [postData, setPostData] = useState({
     title: "",
@@ -238,7 +240,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <CustomPaper>
         <Typography variant="h6" align="center">
-          Please Sign In to create your own memories and like other's memories.
+          Please Sign In to create, edit and delete your own memories and like, comment on other's memories.
         </Typography>
       </CustomPaper>
     );
@@ -264,6 +266,8 @@ const Form = ({ currentId, setCurrentId }) => {
           name="message"
           label="Message"
           variant="outlined"
+            rows={4}
+            multiline
           fullWidth
           value={postData.message}
           onChange={(e) => setPostData({ ...postData, message: e.target.value })}

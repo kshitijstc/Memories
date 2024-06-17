@@ -8,6 +8,7 @@ export const signin = (formData, navigate) => async (dispatch) => {
     dispatch({ type: AUTH, data });
     navigate("/");
   } catch (error) {
+    alert("Invalid Credentials. Please enter correct username and password."); 
     console.log(error);
   }
 }

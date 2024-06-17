@@ -179,6 +179,7 @@ const Overlay2 = styled(Box)({
   top: '20px',
   right: '20px',
   color: 'white',
+  zIndex: 10,  
 });
 
 const Details = styled(Box)({
@@ -196,12 +197,6 @@ const CustomCardActions = styled(CardActions)({
   display: 'flex',
   justifyContent: 'space-between',
 });
-const CustomButtonBase = styled(ButtonBase)({
-  padding: '0 16px 8px 16px',
-  display: 'flex',
-  justifyContent: 'space-between',
-});
-
 const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -223,20 +218,25 @@ const Post = ({ post, setCurrentId }) => {
 
   return (
     <CustomCard raised elevation={6}>
-      <ButtonBase component="span" onClick={openPost} style={{ display: 'block', textAlign: 'initial' }}>
+      <ButtonBase component="span" onClick={openPost} style={{ display: 'block', textAlign: 'initial',zIndex: 1}}>
       {/* <Media image={`https://memories-24-7.onrender.com/${post.selectedFile}`} title={post.title} /> */}
       <Media image={`http://localhost:5000/${post.selectedFile}`} title={post.title} />
       <Overlay>
         <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
       </Overlay>
+      </ButtonBase>
       <Overlay2>
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
-          <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(post._id)}>
+          <Button style={{ color: 'white'}} size="small" onClick={() => {
+            setCurrentId(post._id);
+            }}>
             <EditIcon fontSize="small" />
+
           </Button>
         )}
       </Overlay2>
+      <ButtonBase component="span" onClick={openPost} style={{ display: 'block', textAlign: 'initial',zIndex: 1, }}>
       <Details>
         <Typography variant="body2" color="textSecondary">
           {post.tags.map((tag) => `#${tag} `)}
@@ -252,7 +252,7 @@ const Post = ({ post, setCurrentId }) => {
           <Likes />
         </Button>
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
-          <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
+          <Button size="small" color="error" onClick={() => dispatch(deletePost(post._id))}>
             <DeleteIcon fontSize="small" /> Delete
           </Button>
         )}

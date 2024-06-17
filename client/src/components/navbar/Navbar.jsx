@@ -30,7 +30,7 @@ const Navbar = () => {
     setUser(null);
   }
 
-  // console.log("User:", user);
+  console.log("User:", user);
   return (
     <AppBar className="appBar" position="static" color="inherit">
       <Toolbar className="toolbar">

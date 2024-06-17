@@ -6,34 +6,36 @@ import moment from 'moment';
 import {styled} from '@mui/material/styles';
 import {getPost , getPostBySearch} from "../../actions/Posts";
 import MemoriesLogo from '../../images/MemoriesLogo.jpg';
+import CommentSection from './CommentSection';
+import './PostDetails.css';
 
 const Media = styled('img')({
-    borderRadius: '20px',
-    objectFit: 'cover',
-    width: '100%',
-    maxHeight: '600px',
-
+  borderRadius: '20px',
+  objectFit: 'cover',
+  width: '650px',
+  maxHeight: '400px',
   })
+  const ImageSection = styled('div')(({ theme }) => ({
+    marginLeft: '20px',
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: 0,
+    },
+  }));
 
-//   card: {
-//     display: 'flex',
-//     width: '100%',
-//     [theme.breakpoints.down('sm')]: {
-//       flexWrap: 'wrap',
-//       flexDirection: 'column',
-//     },
-//   },
-//   section: {
-//     borderRadius: '20px',
-//     margin: '10px',
-//     flex: 1,
-//   },
-//   imageSection: {
-//     marginLeft: '20px',
-//     [theme.breakpoints.down('sm')]: {
-//       marginLeft: 0,
-//     },
-//   },
+  const Card = styled('div')(({ theme }) => ({
+    display: 'flex',
+    width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      flexWrap: 'wrap',
+      flexDirection: 'column',
+    },
+  }));
+  const Section = styled('div')(({ theme }) => ({
+    borderRadius: '20px',
+    margin: '10px',
+    flex: 1,
+  }));
+
 //   recommendedPosts: {
 //     display: 'flex',
 //     [theme.breakpoints.down('sm')]: {
@@ -73,8 +75,8 @@ const PostDetails = () => {
   }
   return (
     <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
-    <div>
-      <div>
+    <Card>
+      <Section>
         <Typography variant="h3" component="h2">{post.title}</Typography>
         <Typography gutterBottom variant='h6' color='textSecondary' component='h2'>{post.tags.map((tag) => `#${tag} `)}</Typography>
         <Typography variant="body1" component="p">{post.message}</Typography>
@@ -83,14 +85,14 @@ const PostDetails = () => {
         <Divider style={{ margin: '20px 0' }} />
         <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
         <Divider style={{ margin: '20px 0' }} />
-        <Typography variant="body1"><strong>Comments - coming soon!</strong></Typography>
+        <CommentSection post={post}/>
         <Divider style={{ margin: '20px 0' }} />
-      </div>
-      <div>
+      </Section>
+      <ImageSection>
         <Media src={
           `http://localhost:5000/${post.selectedFile}` || MemoriesLogo}></Media>
-      </div>
-    </div>
+      </ImageSection>
+    </Card>
     {recommendedPosts.length && 
     <div>
       <Typography gutterBottom variant="h5">You might also like:</Typography> 
