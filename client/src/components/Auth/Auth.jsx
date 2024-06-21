@@ -158,7 +158,7 @@ const Auth = () => {
                 letterSpacing: "1px",
               }}
             >
-              {isSignup ? "Sign Up" : "Sign In"}
+            {isSignup ? "Sign Up" : "Sign In"}
             </Button>
             <Grid container justify="flex-end">
               <Grid item>

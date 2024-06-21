@@ -48,7 +48,8 @@ const CommentSection = ({post}) => {
         
           <div ref={commentsRef} />
         </Innercontainer>
-        {user?.result?.name && (<div style={{width:'60%'}}>
+        {user?.result?.name ? (
+            <div style={{width:'60%'}}>
             <Typography variant="h6" gutterBottom>Write a Comment</Typography>
             <TextField
               fullWidth
@@ -66,7 +67,11 @@ const CommentSection = ({post}) => {
               Comment
             </Button>
         </div>
-    )}
+        ) : (
+          <Typography variant="h6" gutterBottom>
+            Please log in to leave a comment! 
+          </Typography>
+        )}
         
     </Outercontainer>
   );

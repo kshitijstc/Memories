@@ -240,7 +240,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <CustomPaper>
         <Typography variant="h6" align="center">
-          Please Sign In to create, edit and delete your own memories and like, comment on other's memories.
+          Please Sign In to create, edit and delete your own memories and like or comment on other's memories.
         </Typography>
       </CustomPaper>
     );

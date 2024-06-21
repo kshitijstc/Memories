@@ -218,7 +218,7 @@ const Post = ({ post, setCurrentId }) => {
 
   return (
     <CustomCard raised elevation={6}>
-      <ButtonBase component="span" onClick={openPost} style={{ display: 'block', textAlign: 'initial',zIndex: 1}}>
+      <ButtonBase  component="span" onClick={openPost} style={{ display: 'block', textAlign: 'initial',zIndex: 1}}>
       <Media image={`https://memories-24-7.onrender.com/${post.selectedFile}`} title={post.title} />
       {/* <Media image={`http://localhost:5000/${post.selectedFile}`} title={post.title} /> */}
       <Overlay>
