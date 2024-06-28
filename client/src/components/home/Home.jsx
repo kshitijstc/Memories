@@ -58,7 +58,7 @@ const Home = () => {
   const searchPost = () => { 
     if (search.trim()) {
       // dispatch to search for posts
-      dispatch(getPostBySearch({ search:search }));
+      dispatch(getPostBySearch(search));
       // This is done so that if we want to send a friend the search query, we can do so by directly copying the URL and sending it to them
       navigate(`/posts/search?searchQuery=${search || "none"}`);
     } else {
