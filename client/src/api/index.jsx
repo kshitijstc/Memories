@@ -27,7 +27,7 @@ export const fetchPosts = (page) => API.get(`/posts?page=${page}`);
 export const fetchPostsBySearch = (searchQuery) => {
   const search = searchQuery.search || 'none';
   console.log(`Fetching posts with search query: ${search}`);
-  return API.get(`/posts/search?searchQuery=${encodeURIComponent(search)}`);
+  return API.get(`/posts/search?searchQuery=${search}`);
 };
 
 // export const createPost = (newPost) => API.post("/posts", newPost);
