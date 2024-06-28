@@ -4,7 +4,7 @@ import {  styled } from "@mui/material/styles";
 import Posts from "../posts/Posts";
 import Form from "../form/Form";
 import { useDispatch } from "react-redux";
-import { getPosts,getPostBySearch } from "../../actions/Posts";
+import { getPostBySearch } from "../../actions/Posts";
 import { useTheme, useMediaQuery } from "@mui/material";
 import "../../app.css";
 import Paginate from "../Pagination";
@@ -58,13 +58,16 @@ const Home = () => {
   const searchPost = () => { 
     if(search.trim()) {
       // dispatch to search for posts
-      dispatch(getPostBySearch({search:search}));
+      dispatch(getPostBySearch({search}));
       // This is done so that if we want to send a friend the search query, we can do so by directly copying the URL and sending it to them
       navigate(`/posts/search?searchQuery=${search || "none"}`);
     } else {
       navigate("/");
     }
   }
+
+
+
   return (
     <Grow in>
       <Container maxWidth="xl">

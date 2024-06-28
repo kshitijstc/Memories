@@ -2,8 +2,8 @@ import axios from 'axios';
 // axios is used to make requests to the server and make api calls
 
 // ----------------------------------------------------------
-const API = axios.create({ baseURL: 'https://memories-24-7.onrender.com' });
-// const API = axios.create({ baseURL: 'http://localhost:5000/'});
+// const API = axios.create({ baseURL: 'https://memories-24-7.onrender.com' });
+const API = axios.create({ baseURL: 'http://localhost:5000/'});
 // Whenever you uncomment and comment it make sure to change the image url in Post.jsx and in many other places also
 // ----------------------------------------------------------
 
@@ -25,10 +25,9 @@ API.interceptors.request.use((req) => {
 export const fetchPost = (id) => API.get(`/posts/${id}`)
 export const fetchPosts = (page) => API.get(`/posts?page=${page}`);
 export const fetchPostsBySearch = (searchQuery) => {
-  const search = searchQuery.search || 'none';
-  console.log(`Fetching posts with search query: ${search}`);
-  return API.get(`/posts/search?searchQuery=${search}`);
+  return API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'}`);
 };
+
 
 // export const createPost = (newPost) => API.post("/posts", newPost);
 // export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
