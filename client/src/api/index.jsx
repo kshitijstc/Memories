@@ -26,8 +26,9 @@ export const fetchPost = (id) => API.get(`/posts/${id}`)
 export const fetchPosts = (page) => API.get(`/posts?page=${page}`);
 export const fetchPostsBySearch = (searchQuery) => {
   const search = searchQuery.search || 'none';
-  console.log(`Fetching posts with search query: ${search}`);
-  return API.get(`/posts/search?searchQuery=${search}`);
+  const title = RegExp(search, 'i');
+  console.log(`Fetching posts with search query: ${title}`);
+  return API.get(`/posts/search?searchQuery=${title || 'none'}`);
 };
 
 // export const createPost = (newPost) => API.post("/posts", newPost);
