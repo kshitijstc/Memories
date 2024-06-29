@@ -63,10 +63,12 @@ const CustomCardActions = styled(CardActions)({
   display: 'flex',
   justifyContent: 'space-between',
 });
-const Post = ({ post, setCurrentId }) => {
+// In your React component
+  const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
   const navigate = useNavigate();
+
   const Likes = () => {
     if (post.likes.length > 0) {
       return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
@@ -84,35 +86,30 @@ const Post = ({ post, setCurrentId }) => {
 
   return (
     <CustomCard raised elevation={6}>
-      <ButtonBase  component="span" onClick={openPost} style={{ display: 'block', textAlign: 'initial',zIndex: 1}}>
-      <Media image={post.selectedFile} title={post.title} />
-      {/* <Media image={`https://memories-24-7.onrender.com/${post.selectedFile}`} title={post.title} /> */}
-      {/* <Media image={`http://localhost:5000/${post.selectedFile}`} title={post.title} /> */}
-      <Overlay>
-        <Typography variant="h6">{post.name}</Typography>
-        <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
-      </Overlay>
+      <ButtonBase component="span" onClick={openPost} style={{ display: 'block', textAlign: 'initial', zIndex: 1 }}>
+        <Media image={post.selectedFile} title={post.title} />
+        <Overlay>
+          <Typography variant="h6">{post.name}</Typography>
+          <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
+        </Overlay>
       </ButtonBase>
       <Overlay2>
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
-          <Button style={{ color: 'white'}} size="small" onClick={() => {
-            setCurrentId(post._id);
-            }}>
+          <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(post._id)}>
             <EditIcon fontSize="small" />
-
           </Button>
         )}
       </Overlay2>
-      <ButtonBase component="span" onClick={openPost} style={{ display: 'block', textAlign: 'initial',zIndex: 1, }}>
-      <Details>
-        <Typography variant="body2" color="textSecondary">
-          {post.tags.map((tag) => `#${tag} `)}
-        </Typography>
-      </Details>
-      <CardContent>
-        <Title variant="h5">{post.title}</Title>
-        <Typography variant="body2" component="p" color="textSecondary">{post.message}</Typography>
-      </CardContent>
+      <ButtonBase component="span" onClick={openPost} style={{ display: 'block', textAlign: 'initial', zIndex: 1 }}>
+        <Details>
+          <Typography variant="body2" color="textSecondary">
+            {post.tags.map((tag) => `#${tag} `)}
+          </Typography>
+        </Details>
+        <CardContent>
+          <Title variant="h5">{post.title}</Title>
+          <Typography variant="body2" component="p" color="textSecondary">{post.message}</Typography>
+        </CardContent>
       </ButtonBase>
       <CustomCardActions>
         <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))} disabled={!user?.result}>
@@ -129,6 +126,4 @@ const Post = ({ post, setCurrentId }) => {
 };
 
 export default Post;
-
-
 

@@ -1,5 +1,15 @@
 import PostMessage from "../models/postMessage.js";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+import { v2 as cloudinary } from 'cloudinary';
+dotenv.config();
+
+cloudinary.config({ 
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
+    api_key: process.env.CLOUDINARY_API_KEY, 
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    secure: true
+});
 
 export const getPost = async (req,res) => {
     const {id} = req.params;
@@ -44,43 +54,64 @@ export const getPostsBySearch = async (req,res) => {
     }
 }
 
-export const createPost = async (req,res) => {
-    const { title, message, tags } = req.body;
-    const selectedFile = req.file?`uploads/${req.file.filename}` : '';
+export const createPost = async (req, res) => {
+    const { title, message, tags, name } = req.body;
 
-    const newPost = new PostMessage({
-        title,
-        message,
-        tags,
-        selectedFile,
-        creator: req.userId,
-        createdAt: new Date().toISOString(),
-    });
-    // const post = req.body;
-    // const newPost = new PostMessage({...post, creator: req.userId, createdAt: new Date().toISOString()});
     try {
+        const result = await cloudinary.uploader.upload(req.file.path);
+        const newPost = new PostMessage({
+            title,
+            message,
+            tags,
+            name, // Storing the name of the user
+            creator: req.userId, // Storing the ID of the user
+            selectedFile: result.secure_url,
+            cloudinaryId: result.public_id,
+            createdAt: new Date().toISOString(),
+        });
         await newPost.save();
         res.status(201).json(newPost);
     } catch (error) {
-        res.status(409).json({message: error.message});
+        res.status(409).json({ message: error.message });
     }
-}
+};
 
-export const updatePost = async (req,res) => { 
-    const { id: _id } = req.params;
-    // const post = req.body;
+
+export const updatePost = async (req, res) => {
+    const { id } = req.params;
     const { title, message, tags } = req.body;
-    const selectedFile = req.file?`uploads/${req.file.filename}` : req.body.selectedFile;
-    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("No post with that id");
 
-    /*const updatedPost = await PostMessage.findByIdAndUpdate(_id, {...post, _id}, {new: true});
-    res.json(updatedPost);*/
-    const updatedPost = { title, message, tags, selectedFile, _id };
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const result = await PostMessage.findByIdAndUpdate(_id, updatedPost, { new: true });
+    try {
+        let updatedPost = { title, message, tags, createdAt: new Date().toISOString() };
 
-    res.json(result);
-}
+        if (req.file) {
+            // Upload the new image to Cloudinary
+            const result = await cloudinary.uploader.upload(req.file.path);
+            updatedPost.selectedFile = result.secure_url;
+            updatedPost.cloudinaryId = result.public_id;
+        }
+
+        // Find the post by id and update it with the new data
+        const post = await PostMessage.findById(id);
+
+        if (req.file && post.cloudinaryId) {
+            // Delete the old image from Cloudinary if a new image was uploaded
+            await cloudinary.uploader.destroy(post.cloudinaryId);
+        }
+
+        // Ensure the creator field is not overwritten
+        updatedPost.creator = post.creator;
+
+        const updatedPostMessage = await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+
+        res.status(200).json(updatedPostMessage);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+};
+
 
 export const deletePost = async (req,res) => {
     const {id} = req.params;
