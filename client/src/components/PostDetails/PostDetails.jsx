@@ -89,7 +89,7 @@ const PostDetails = () => {
         <Divider style={{ margin: '20px 0' }} />
       </Section>
       <ImageSection>
-        <Media src={
+        <Media src={ post.selectedFile ||
           `https://memories-24-7.onrender.com/${post.selectedFile}` || 
           `http://localhost:5000/${post.selectedFile}` || MemoriesLogo}></Media>
       </ImageSection>
@@ -105,7 +105,7 @@ const PostDetails = () => {
             <Typography gutterBottom variant='subtitle2'>{name}</Typography> 
             <Typography gutterBottom variant='subtitle2'>{message}</Typography> 
             <Typography gutterBottom variant='subtitle1'>{likes.length}</Typography> 
-            <img src={` https://memories-24-7.onrender.com/${selectedFile}` || `
+            <img src={`${selectedFile} || https://memories-24-7.onrender.com/${selectedFile}` || `
             http://localhost:5000/${selectedFile}` || MemoriesLogo} alt={title} width="200px"/>
           </div>
         })}
