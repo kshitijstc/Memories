@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { styled } from '@mui/system';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -68,14 +68,25 @@ const CustomCardActions = styled(CardActions)({
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
   const navigate = useNavigate();
+  const [likes, setLikes] = useState(post?.likes);
 
+  const hasLikedPost = post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id));
+  const userId = user?.result?.googleId || user?.result?._id;
+  const handleLike = async () => {
+    dispatch(likePost(post._id));
+    if (hasLikedPost) {
+      setLikes(post.likes.filter((id) => id !== userId));
+    } else {
+      setLikes([...post.likes, userId]);
+    }
+  }
   const Likes = () => {
-    if (post.likes.length > 0) {
-      return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
+    if (likes.length > 0) {
+      return likes.find((like) => like === userId)
         ? (
-          <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` }</>
+          <><ThumbUpAltIcon fontSize="small" />&nbsp;{likes.length > 2 ? `You and ${likes.length - 1} others` : `${likes.length} like${likes.length > 1 ? 's' : ''}` }</>
         ) : (
-          <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</>
+          <><ThumbUpAltIcon fontSize="small" />&nbsp;{likes.length} {likes.length === 1 ? 'Like' : 'Likes'}</>
         );
     }
 
@@ -112,7 +123,7 @@ const CustomCardActions = styled(CardActions)({
         </CardContent>
       </ButtonBase>
       <CustomCardActions>
-        <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))} disabled={!user?.result}>
+        <Button size="small" color="primary" onClick={handleLike} disabled={!user?.result}>
           <Likes />
         </Button>
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (

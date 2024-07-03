@@ -4,8 +4,8 @@ import axios from 'axios';
 // ----------------------------------------------------------
 const API = axios.create({ baseURL: 'https://memories-24-7.onrender.com' });
 // const API = axios.create({ baseURL: 'http://localhost:5000/'});
-// Whenever you uncomment and comment it make sure to change the image url in Post.jsx and in many other places also
-// ----------------------------------------------------------
+
+//----------------------------------------------------------
 
 // For middleware
 API.interceptors.request.use((req) => {

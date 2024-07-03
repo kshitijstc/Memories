@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/posts" element={<Home />} exact />
           <Route path="/posts/search" element={<Home />} exact />
           <Route path="/posts/:id" element={<PostDetails />} exact />
-          <Route path="/auth" element={(!user ? <Auth/> : <Navigate to="/posts"/>)} exact />
+          <Route path="/auth" element={(!user ? <Auth/> : <Navigate to="/posts"/>)}/>
         </Routes>
       </Container>
     </BrowserRouter>
