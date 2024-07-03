@@ -47,8 +47,8 @@ export const getPostsBySearch = async (req,res) => {
         // 'i' is used to make the search case insensitive i.e. it will search for the query in both upper and lower case
         // Regular expression is used to search for the query in the title of the post
         const title = new RegExp(searchQuery, 'i');
-        const posts = await PostMessage.find(title);
-        res.json({data:posts});
+        const posts = await PostMessage.find({title});
+        res.json({ data: posts });
     } catch (error) {
         res.status(404).json({ message: error.message });
     }

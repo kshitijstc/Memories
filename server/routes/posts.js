@@ -21,8 +21,8 @@ const upload = multer({storage:storage});
 
 
 router.get("/:id",getPost);
-router.get("/search",getPostsBySearch);
 router.get("/",getPosts);
+router.get("/search",getPostsBySearch);
 router.post("/", auth, upload.single("selectedFile"), createPost);
 router.patch("/:id", auth, upload.single("selectedFile"), updatePost);
 router.delete("/:id",auth,deletePost);
