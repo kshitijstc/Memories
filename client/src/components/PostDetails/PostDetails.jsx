@@ -83,7 +83,7 @@ const PostDetails = () => {
         <Typography variant="h6">Created by: {post.creater}</Typography>
         <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
         <Divider style={{ margin: '20px 0' }} />
-        <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
+        <Typography variant="body1"><strong>Planning to implement Realtime chat soon!</strong></Typography>
         <Divider style={{ margin: '20px 0' }} />
         <CommentSection post={post}/>
         <Divider style={{ margin: '20px 0' }} />
@@ -94,7 +94,7 @@ const PostDetails = () => {
           `http://localhost:5000/${post.selectedFile}` || MemoriesLogo}></Media>
       </ImageSection>
     </Card>
-    {recommendedPosts.length && 
+    {/* {recommendedPosts.length && 
     <div>
       <Typography gutterBottom variant="h5">You might also like:</Typography> 
       <Divider/>
@@ -111,8 +111,8 @@ const PostDetails = () => {
         })}
       </div>
     </div>
-    }
-    </Paper>
+    }*/}
+    </Paper> 
   )
 };
 

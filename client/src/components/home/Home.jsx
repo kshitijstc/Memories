@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
-import { Container, Grow, Grid, Paper, AppBar, Button, TextField, Chip } from "@mui/material";
+import { Container, Grow, Grid, Paper, AppBar, Button, TextField } from "@mui/material";
+import { MuiChipsInput } from 'mui-chips-input'
 import {  styled } from "@mui/material/styles";
 import Posts from "../posts/Posts";
 import Form from "../form/Form";
@@ -36,7 +37,7 @@ const Home = () => {
   const page = query.get("page") || 1;
   const searchQuery = query.get("searchQuery");
   const [search, setSearch] = useState("");
-  // const[tags, setTags] = useState([]);
+  const[tags, setTags] = useState([]);
 
   
   const theme = useTheme();
@@ -49,11 +50,11 @@ const Home = () => {
       searchPost();
     }
   }
-  
+  const handleChange = (tag) => setTags(tag); 
   const searchPost = () => {
-    if (search.trim()) {
-      dispatch(getPostBySearch({ search }));
-      navigate(`/posts/search?searchQuery=${search || 'none'}`);
+    if (search.trim() || tags) {
+      dispatch(getPostBySearch({ search,tags: tags.join(',')}));
+      navigate(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
     } else {
       navigate('/');
     }
@@ -92,14 +93,13 @@ const Home = () => {
                   setSearch(e.target.value);  
                 }}
               />
-              {/* <Chip
+              <MuiChipsInput
                 label="Search Tags"
                 style={{ margin: "10px 0" }}
                 value={tags}
-                onAdd={handleAdd}
-                onDelete={handleDelete}
+                onChange={handleChange}
                 sx={{ marginTop: 2 }}
-              /> */}
+              />
               <Button onClick={searchPost}  
               variant="contained" sx={{ marginTop: 2 }}
               >Search</Button>
