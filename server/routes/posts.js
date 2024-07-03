@@ -18,11 +18,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage:storage});
 
-
-
-router.get("/:id",getPost);
+// Always keep the parameterized routes at the bottom of the file
+// Took me almost 3 weeks to figure this out and fix search functionality
 router.get("/",getPosts);
 router.get("/search",getPostsBySearch);
+router.get("/:id",getPost);
 router.post("/", auth, upload.single("selectedFile"), createPost);
 router.patch("/:id", auth, upload.single("selectedFile"), updatePost);
 router.delete("/:id",auth,deletePost);

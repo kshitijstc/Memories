@@ -12,7 +12,7 @@ const Posts = ({setCurrentId}) => {
   console.log(posts);
   // const sortedPosts = posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   
-  if(!posts.length && !isLoading) return 'No posts';
+  if(!posts.length && !isLoading) return <h1>No Posts</h1>;
   return (
     <div>
       {isLoading ? <CircularProgress /> : (
