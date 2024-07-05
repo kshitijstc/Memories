@@ -22,8 +22,8 @@ const upload = multer({storage:storage});
 // Took me almost 3 weeks to figure this out and fix search functionality
 router.get("/",getPosts);
 router.get("/search",getPostsBySearch);
-router.get("/:id",getPost);
 router.post("/", auth, upload.single("selectedFile"), createPost);
+router.get("/:id",getPost);
 router.patch("/:id", auth, upload.single("selectedFile"), updatePost);
 router.delete("/:id",auth,deletePost);
 router.patch("/:id/likePost",auth,likePost);
