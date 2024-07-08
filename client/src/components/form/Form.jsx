@@ -239,7 +239,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <CustomPaper>
         <Typography variant="h6" align="center">
-          It may take approx. 50 seconds to load the data from the server as it is hosted on render free hosting platform. Till then you can check the <a href="https://github.com/kshitijstc/Memories">github</a> repository of this project.
+          It may take approx. 50 seconds to load the data from the server as it is hosted on render free hosting platform. Till then you can check the <a href="https://github.com/kshitijstc/Memories">Github</a> repository of this project.
         </Typography>
       </CustomPaper>
     );
