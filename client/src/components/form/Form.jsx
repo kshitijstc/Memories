@@ -235,13 +235,19 @@ const Form = ({ currentId, setCurrentId }) => {
     setFile(null);
     setCurrentId(null);
   };
-
-  if (!user?.result?.name) {
+  if(posts.length === 0){
     return (
       <CustomPaper>
         <Typography variant="h6" align="center">
           It may take approx. 50 seconds to load the data from the server as it is hosted on render free hosting platform. Till then you can check the <a href="https://github.com/kshitijstc/Memories">github</a> repository of this project.
-
+        </Typography>
+      </CustomPaper>
+    );
+  }else if (!user?.result?.name) {
+    return (
+      <CustomPaper>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own memories and like other's memories.
         </Typography>
       </CustomPaper>
     );
