@@ -1,7 +1,7 @@
 
 # Memories
-- This project was build so that users can preserve their memories and enlist their experiences from different phases of their lifes. They can also like other users memories and can learn from them.<br>
-- The main intention behind building this project was to create something where I can track my progress and at the same time leave my worst and best experiences and see how much I have learned from it. It also helped me to learn and understand how a fullstack application works and how the fronted, backend and databases interact with each other. <br>
+- This project was build so that users can preserve their memories and enlist their experiences from different phases of their lifes. Users can interact with others' memories, providing likes and learning from their stories.<br>
+- The main goal of this project was to create a space for personal growth and reflection, while also serving as a practical learning experience in full-stack development. <br>
 
 # Website
 Link - https://memories-seven-pi.vercel.app <br>
