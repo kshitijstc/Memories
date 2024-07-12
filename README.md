@@ -69,7 +69,7 @@ cd ..
 ```
 
 ### Environment Variables
-Create a <b>`.env`</b> file in the /memories/server directory and add the necessary environment variables:
+Create a `.env` file in the `/memories/server` directory and add the necessary environment variables:
 ```sh
 PORT = "PORT"
 CONNECTION_URL = "MONGO URL STRING"
