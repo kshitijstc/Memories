@@ -78,6 +78,11 @@ CLOUDINARY_API_KEY = "YOUR_CLOUDINARY_API_KEY"
 CLOUDINARY_API_SECRET = "YOUR_CLOUDINARY_API_SECRET"
 ```
 ### Run the Application
+To run the client side perform the following command in `/memories/client` directory 
+```sh
+npm run dev
+```
+To run the server side perform the following command in `/memories/server` directory 
 ```sh
 npm run dev
 ```
