@@ -50,10 +50,36 @@ This is the user authentication page with Google authentication for fast and sea
 To run this project locally, follow these steps:
 
 ### Clone the Repository
+Make sure to replace <b>'your-github-username'</b> with your actual GitHub username or the username of the repository owner.
 ```sh
-git clone https://github.com/yourusername/memories.git
+git clone https://github.com/<your-github-username>/memories.git
 cd memories
+```
 
+### Install Dependencies
+#### Server-side Dependencies
+```sh
+npm install
+```
+#### Client-side Dependencies
+```sh
+Copy code
+cd client
+npm install
+cd ..
+```
 
-
+### Environment Variables
+Create a <b>`.env`</b> file in the root directory and add the necessary environment variables:
+env
+Copy code
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+Run the Application
+sh
+Copy code
+npm run dev
 ### Install  Dependencies
