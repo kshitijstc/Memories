@@ -3,7 +3,7 @@
 -The main intention behind building this project was to create something where I track my progress and at the same time leave my worst and best experiences and see how much I have learned from it. It also helped me to learn and understand how a fullstack application works and how the fronted, backend and databases interact with each other. <br>
 
 # Website
-Link-1 https://memories-seven-pi.vercel.app <br>
+Link - https://memories-seven-pi.vercel.app <br>
 
 # Screenshots
 - This is the landing page of the site where you can see all the memories created by all the users.<br>
