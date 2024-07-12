@@ -9,12 +9,11 @@
 ## Key Features
 
 - **Create and Share Memories**: Users can create, edit, and delete their own memories.
-- **Pagination**: Efficiently navigates through large sets of memories by dividing them into multiple pages, improving load times and user experience.
 - **Interact with Others**: Like and comment on memories shared by other users.
 - **Track Personal Growth**: Reflect on past experiences and track personal progress over time.
 - **User Authentication**: Secure login with email and Google authentication for fast access.
 - **Responsive Design**: Optimized for both desktop and mobile use.
-
+- **Pagination**: Efficiently navigates through large sets of memories by dividing them into multiple pages, improving load times and user experience.
 
 ## Screenshots
 
