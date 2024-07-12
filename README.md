@@ -1,6 +1,14 @@
 # Memories
 - This project was build so that users can preserve their memories and enlist their experiences from different phases of their lifes. Users can interact with others' memories, providing likes and learning from their stories.<br>
 - Explore the Memories platform: https://memories-seven-pi.vercel.app <br>
+
+## Table of Contents
+- [Motivation](#motivation)
+- [Key Features](#key-features)
+- [Screenshots](#screenshots)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+
 ## Motivation
 - The inspiration behind building this project was to have a personal space where I could track my progress, document my best and worst experiences, and reflect on my learning journey.
 -  Additionally, it served as a comprehensive project to understand the intricacies of full-stack application development, including front-end, back-end, and database interactions.
