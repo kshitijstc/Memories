@@ -69,13 +69,13 @@ cd ..
 ```
 
 ### Environment Variables
-Create a <b>`.env`</b> file in the root directory and add the necessary environment variables:
+Create a <b>`.env`</b> file in the /memories/server directory and add the necessary environment variables:
 ```sh
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
+PORT = "PORT"
+CONNECTION_URL = "MONGO URL STRING"
+CLOUDINARY_CLOUD_NAME = "YOUR_CLOUDINARY_CLOUD_NAME"
+CLOUDINARY_API_KEY = "YOUR_CLOUDINARY_API_KEY"
+CLOUDINARY_API_SECRET = "YOUR_CLOUDINARY_API_SECRET"
 ```
 ### Run the Application
 ```sh
