@@ -6,6 +6,15 @@
 - The inspiration behind building this project was to have a personal space where I could track my progress, document my best and worst experiences, and reflect on my learning journey.
 -  Additionally, it served as a comprehensive project to understand the intricacies of full-stack application development, including front-end, back-end, and database interactions.
 
+## Key Features
+
+- **Create and Share Memories**: Users can create, edit, and delete their own memories.
+- **Interact with Others**: Like and comment on memories shared by other users.
+- **Track Personal Growth**: Reflect on past experiences and track personal progress over time.
+- **User Authentication**: Secure login with email and Google authentication for fast access.
+- **Responsive Design**: Optimized for both desktop and mobile use.
+
+
 ## Screenshots
 
 ### 1. Landing Page
