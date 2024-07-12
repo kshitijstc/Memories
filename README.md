@@ -32,7 +32,7 @@ This is the user authentication page with Google authentication for fast and sea
 
 - **Front-End**: React, Redux, Material-UI
 - **Back-End**: Node.js, Express
-- **Database**: MongoDB
+- **Database**: MongoDB, Cloudinary
 - **Authentication**: JWT, Google OAuth
-- **Hosting**: Vercel
+- **Hosting**: Vercel for frontend and Render for backend 
 
