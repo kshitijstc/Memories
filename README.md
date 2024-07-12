@@ -7,7 +7,7 @@
 - [Key Features](#key-features)
 - [Screenshots](#screenshots)
 - [Technologies Used](#technologies-used)
-- [Installation](#installation)
+- [Installation](#installation-and-setup)
 
 ## Motivation
 - The inspiration behind building this project was to have a personal space where I could track my progress, document my best and worst experiences, and reflect on my learning journey.
