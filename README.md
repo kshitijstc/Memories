@@ -45,3 +45,15 @@ This is the user authentication page with Google authentication for fast and sea
 - **Authentication**: JWT, Google OAuth
 - **Hosting**: Vercel for frontend and Render for backend 
 
+## Installation and Setup
+
+To run this project locally, follow these steps:
+
+### Clone the Repository
+```sh
+git clone https://github.com/yourusername/memories.git
+cd memories
+
+
+
+### Install  Dependencies
