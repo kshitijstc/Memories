@@ -4,3 +4,6 @@
 
 # Website
 Link-1 https://memories-seven-pi.vercel.app <br>
+
+# Images of the site
+![Screenshot (2)](https://github.com/user-attachments/assets/448aa869-9557-4a7f-9c27-7d3c6035e96a)
