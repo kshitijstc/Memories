@@ -9,6 +9,7 @@
 ## Key Features
 
 - **Create and Share Memories**: Users can create, edit, and delete their own memories.
+- **Pagination**: .
 - **Interact with Others**: Like and comment on memories shared by other users.
 - **Track Personal Growth**: Reflect on past experiences and track personal progress over time.
 - **User Authentication**: Secure login with email and Google authentication for fast access.
@@ -78,11 +79,12 @@ CLOUDINARY_API_KEY = "YOUR_CLOUDINARY_API_KEY"
 CLOUDINARY_API_SECRET = "YOUR_CLOUDINARY_API_SECRET"
 ```
 ### Run the Application
-To run the client side perform the following command in `/memories/client` directory 
+To run the client side, perform the following command in the `/memories/client` directory:
 ```sh
 npm run dev
 ```
-To run the server side perform the following command in `/memories/server` directory 
+To run the server side, perform the following command in the `/memories/server` directory:
 ```sh
 npm run dev
 ```
+This will start both the server and the client side of the application.
