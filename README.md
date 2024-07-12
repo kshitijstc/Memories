@@ -1,4 +1,3 @@
-
 # Memories
 - This project was build so that users can preserve their memories and enlist their experiences from different phases of their lifes. Users can interact with others' memories, providing likes and learning from their stories.<br>
 - Explore the Memories platform: https://memories-seven-pi.vercel.app <br>
