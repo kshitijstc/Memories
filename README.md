@@ -63,7 +63,6 @@ npm install
 ```
 #### Client-side Dependencies
 ```sh
-Copy code
 cd client
 npm install
 cd ..
@@ -71,15 +70,14 @@ cd ..
 
 ### Environment Variables
 Create a <b>`.env`</b> file in the root directory and add the necessary environment variables:
-env
-Copy code
+```sh
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
-Run the Application
-sh
-Copy code
+```
+### Run the Application
+```sh
 npm run dev
-### Install  Dependencies
+```
