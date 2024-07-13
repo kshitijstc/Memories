@@ -56,7 +56,7 @@ This is the user authentication page with Google authentication for fast and sea
 
 To run this project locally, follow these steps:
 ### Prerequisites
-- Ensure that Node.js installed on your local machine.
+- Ensure that Node.js is installed on your local machine.
 ### Clone the Repository
 Make sure to replace <b>'your-github-username'</b> with your actual GitHub username or the username of the repository owner.
 ```sh
