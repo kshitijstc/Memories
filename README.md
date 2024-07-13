@@ -68,6 +68,9 @@ cd memories
 #### Server-side Dependencies
 ```sh
 npm install
+cd server
+npm install
+cd ..
 ```
 #### Client-side Dependencies
 ```sh
