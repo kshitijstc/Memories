@@ -25,7 +25,7 @@
 ## Screenshots
 
 ### 1. Landing Page
-This is the landing page where you can see all the memories created by users.
+This is the landing page where you can see all the memories created by users. When the site is loading for the first time, it may take approximately 50 seconds to load data from the server as I am hosting in render free hosting platform.
 
 <img src="https://github.com/user-attachments/assets/448aa869-9557-4a7f-9c27-7d3c6035e96a" alt="Screenshot" style="width: 600px; height: auto;">
 
