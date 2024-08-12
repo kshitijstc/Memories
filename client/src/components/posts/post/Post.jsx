@@ -107,7 +107,7 @@ const CustomCardActions = styled(CardActions)({
       <Overlay2>
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
           <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(post._id)}>
-            <EditIcon fontSize="small" />
+            <EditIcon fontSize="small"/>
           </Button>
         )}
       </Overlay2>

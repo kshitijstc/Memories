@@ -79,12 +79,12 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
     const { id } = req.params;
-    const { title, message, tags } = req.body;
+    const { title, message, tags, name } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
     try {
-        let updatedPost = { title, message, tags, createdAt: new Date().toISOString() };
+        let updatedPost = { title, message, name, tags, createdAt: new Date().toISOString() };
 
         if (req.file) {
             // Upload the new image to Cloudinary

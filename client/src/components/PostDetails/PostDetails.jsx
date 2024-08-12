@@ -80,7 +80,7 @@ const PostDetails = () => {
         <Typography variant="h3" component="h2">{post.title}</Typography>
         <Typography gutterBottom variant='h6' color='textSecondary' component='h2'>{post.tags.map((tag) => `#${tag} `)}</Typography>
         <Typography variant="body1" component="p">{post.message}</Typography>
-        <Typography variant="h6">Created by: {post.creater}</Typography>
+        <Typography variant="h6">Created by: {post.name}</Typography>
         <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
         <Divider style={{ margin: '20px 0' }} />
         <Typography variant="body1"><strong>Planning to implement Realtime chat soon!</strong></Typography>

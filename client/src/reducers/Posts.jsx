@@ -2,7 +2,7 @@ import { FETCH_ALL, FETCH_BY_SEARCH , CREATE, UPDATE, DELETE, LIKE,START_LOADING
 
 const postReducer = (state = {isLoading: true, posts:[] }, action) => {
     switch (action.type) {
-        case UPDATE:
+       case UPDATE:
         case LIKE:
             return {...state, posts: state.posts.map((post) => post._id === action.payload._id ? action.payload : post)};
         case COMMENT:

@@ -41,6 +41,7 @@ const Form = ({ currentId, setCurrentId }) => {
     title: "",
     message: "",
     tags: "",
+    creater:"",
   });
   const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ const Form = ({ currentId, setCurrentId }) => {
     const formData = new FormData();
     formData.append("title", postData.title);
     formData.append("message", postData.message);
+    formData.append("name", user?.result?.name);
     formData.append("tags", postData.tags.join(","));
     if (file) formData.append("selectedFile", file);
 
@@ -72,6 +74,7 @@ const Form = ({ currentId, setCurrentId }) => {
       title: "",
       message: "",
       tags: "",
+      creater:"",
     });
     setFile(null);
     setCurrentId(null);
