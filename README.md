@@ -5,6 +5,7 @@
 ## Table of Contents
 - [Motivation](#motivation)
 - [Key Features](#key-features)
+- [Video Demonstration](#video-demonstration)
 - [Screenshots](#screenshots)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation-and-setup)
@@ -21,6 +22,12 @@
 - **User Authentication**: Secure login with email and Google authentication for fast access.
 - **Responsive Design**: Optimized for both desktop and mobile use.
 - **Pagination**: Efficiently navigates through large sets of memories by dividing them into multiple pages, improving load times and user experience.
+
+## Video Demonstration
+
+
+https://github.com/user-attachments/assets/13a02c77-6329-4821-9c94-1e3989224730
+
 
 ## Screenshots
 
