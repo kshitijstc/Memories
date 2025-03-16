@@ -25,6 +25,7 @@ const Paginate = ({page})=>{
             size='medium'
             color="primary"
             variant='outlined'
+            siblingCount={0}
             // sx={{display: 'flex', justifyContent: 'center'}}
             renderItem={(item) => (
                 <PaginationItem 

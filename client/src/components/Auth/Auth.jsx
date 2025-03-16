@@ -7,8 +7,6 @@ import {
   Grid,
   Button,
 } from "@mui/material";
-// import Icon from "./Icon";
-import { styled } from "@mui/material/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { GoogleLogin } from "@react-oauth/google";
 import Input from "./Input";
@@ -88,7 +86,7 @@ const Auth = () => {
               backgroundColor: "primary.main",
             }}
           >
-            <LockOutlinedIcon />
+          <LockOutlinedIcon/>
           </Avatar>
           <Typography variant="h5" sx={{ textAlign: "center" }}>
             {isSignup ? "Sign up" : "Sign in"}
